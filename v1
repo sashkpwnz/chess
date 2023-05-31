@@ -1,0 +1,38 @@
+# Chessboard representation
+chessboard = [
+    ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
+    ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
+    ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r']
+]
+
+# Function to print the chessboard
+def print_board(board):
+    for row in board:
+        print(' '.join(row))
+
+# Function to move a chess piece
+def move_piece(start_pos, end_pos):
+    start_row, start_col = start_pos
+    end_row, end_col = end_pos
+
+    piece = chessboard[start_row][start_col]
+
+    # Check if the move is valid
+    # (additional logic for checking valid moves should be added for each piece)
+    if piece == 'P' and end_row == start_row - 1 and end_col == start_col:
+        chessboard[start_row][start_col] = ' '
+        chessboard[end_row][end_col] = 'P'
+    else:
+        print("Invalid move!")
+
+# Testing the chessboard and piece movement
+print_board(chessboard)
+print("---------")
+
+move_piece((6, 4), (4, 4))  # Moving the white pawn
+print_board(chessboard)
